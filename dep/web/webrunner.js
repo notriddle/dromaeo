@@ -231,6 +231,7 @@
 	var title, testName, testID, testSummary = {} , testSummaryNum = {}, maxTotal = 0, maxTotalNum = 0;
 	var nameDone = {};
 	var automated = false;
+	var post_json = false;
 	
 	// Query String Parsing
 	var search = window.limitSearch || (window.location.search || "?").substr(1);
@@ -271,7 +272,10 @@
 		if (m)
 			numTests = Number(m[1]);
 
-		automated = /^automated$/.exec(parts[i]);
+		if (/^automated$/.exec(parts[i]))
+			automated = true;
+		if (/^post_json$/.exec(parts[i]))
+			post_json = true;
 	}
 
 	jQuery(function(){
@@ -380,7 +384,7 @@
 				}
 	
 			} else if ( dataStore && dataStore.length ) {
-				if (!automated) {
+				if (!automated || post_json) {
 					$("body").addClass("alldone");
 					var div = jQuery("<div class='results'>Saving...</div>").insertBefore("#overview");
 					jQuery.ajax({
