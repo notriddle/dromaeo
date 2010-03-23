@@ -1,7 +1,7 @@
 <?php
 /*
 Dromaeo Test Suite
-Copyright (c) 2008 John Resig
+Copyright (c) 2010 John Resig
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
