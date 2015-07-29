@@ -121,7 +121,15 @@
 						times.push( cur - start );
 					}
 				} catch( e ) {
-					alert("FAIL " + name + " " + num + e);
+                    if (!automated) {
+					    alert("FAIL " + name + " " + num + e);
+                    } else if (post_json) {
+					    jQuery.ajax({
+						    type: "POST",
+						    url: "store.php",
+						    data: "data=" + encodeURIComponent(JSON.stringify({fail: name, num: num, e: e.toString()}))
+					    });
+                    }
 					return;
 				}
 
