@@ -89,6 +89,8 @@
 						connectShark();
 						startShark();
 					}
+
+                    console.log("[dromaeo] " + name);
 					
 					start = (new Date()).getTime();
 					
